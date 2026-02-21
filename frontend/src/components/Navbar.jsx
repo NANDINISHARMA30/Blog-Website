@@ -6,28 +6,38 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <nav style={{ padding: "10px", background: "#222", color: "#fff" }}>
-      <Link to="/" style={{ marginRight: "10px", color: "#fff" }}>
-        Home
-      </Link>
+    <nav className="navbar">
+      <div className="container navbar-inner">
+        <Link to="/" className="brand">
+          AimoBlog
+        </Link>
 
-      {user ? (
-        <>
-          <Link to="/create" style={{ marginRight: "10px", color: "#fff" }}>
-            Create
+        <div className="nav-links">
+          <Link to="/" className="nav-link">
+            Home
           </Link>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/login" style={{ marginRight: "10px", color: "#fff" }}>
-            Login
-          </Link>
-          <Link to="/register" style={{ color: "#fff" }}>
-            Register
-          </Link>
-        </>
-      )}
+
+          {user ? (
+            <>
+              <Link to="/create" className="nav-link">
+                Create Blog
+              </Link>
+              <button type="button" onClick={logout} className="nav-btn ghost-btn">
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+              <Link to="/register" className="nav-btn primary-btn">
+                Register
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
     </nav>
   );
 };
